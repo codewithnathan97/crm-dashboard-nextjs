@@ -23,7 +23,7 @@ export const customers = sqliteTable('customers', {
 export const deals = sqliteTable('deals', {
   id: integer('id').primaryKey({ autoIncrement: true }),
   title: text('title').notNull(),
-  customerId: integer('customer_id').notNull().references(() => customers.id),
+  customerId: integer('customer_id').notNull().references(() => customers.id, { onDelete: 'cascade' }),
   customerName: text('customer_name'), // Denormalized for easier queries
   value: real('value').notNull(),
   stage: text('stage').notNull().default('prospecting'), // prospecting, qualification, proposal, negotiation, closed-won, closed-lost
@@ -42,9 +42,9 @@ export const activities = sqliteTable('activities', {
   type: text('type').notNull(), // call, email, meeting, note, task, deal-won, deal-created
   title: text('title').notNull(),
   description: text('description'),
-  customerId: integer('customer_id').references(() => customers.id),
+  customerId: integer('customer_id').references(() => customers.id, { onDelete: 'cascade' }),
   customerName: text('customer_name'), // Denormalized
-  dealId: integer('deal_id').references(() => deals.id),
+  dealId: integer('deal_id').references(() => deals.id, { onDelete: 'cascade' }),
   dealTitle: text('deal_title'), // Denormalized
   dueDate: text('due_date'), // ISO date string
   completedAt: text('completed_at'), // ISO date string
@@ -58,8 +58,8 @@ export const activities = sqliteTable('activities', {
 export const notes = sqliteTable('notes', {
   id: integer('id').primaryKey({ autoIncrement: true }),
   content: text('content').notNull(),
-  customerId: integer('customer_id').references(() => customers.id),
-  dealId: integer('deal_id').references(() => deals.id),
+  customerId: integer('customer_id').references(() => customers.id, { onDelete: 'cascade' }),
+  dealId: integer('deal_id').references(() => deals.id, { onDelete: 'cascade' }),
   createdBy: text('created_by'),
   createdAt: text('created_at').notNull().default(sql`(datetime('now'))`),
   updatedAt: text('updated_at').notNull().default(sql`(datetime('now'))`),
