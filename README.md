@@ -1,3 +1,27 @@
+# CRM Dashboard
+
+A Next.js-based CRM dashboard built with TypeScript, Tailwind CSS, and Drizzle ORM.
+
+## Project Philosophy
+
+This project follows a strict constitution defined in [`.specify/memory/constitution.md`](.specify/memory/constitution.md). Key principles include:
+
+- **Component Minimalism**: Create as few components as possible; maximize reusability
+- **No Testing Required**: Quality assurance through manual review and runtime validation
+- **Type Safety**: Strict TypeScript throughout the application
+- **Technology Stack**: Next.js 16+, TypeScript, Tailwind CSS, Drizzle ORM, SQLite
+- **Simplicity**: YAGNI (You Aren't Gonna Need It) - avoid premature optimization
+
+## Technology Stack
+
+- **Framework**: Next.js 16+ (App Router)
+- **Language**: TypeScript 5+
+- **Styling**: Tailwind CSS 4+
+- **ORM**: Drizzle ORM 0.44+
+- **Database**: SQLite (better-sqlite3)
+- **UI Icons**: Lucide React
+- **Charts**: Recharts
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
@@ -19,6 +43,25 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Database Commands
+
+```bash
+# Generate migration files
+npm run db:generate
+
+# Run migrations
+npm run db:migrate
+
+# Push schema directly to database (development)
+npm run db:push
+
+# Open Drizzle Studio
+npm run db:studio
+
+# Seed database with sample data
+npm run db:seed
+```
 
 ## Learn More
 

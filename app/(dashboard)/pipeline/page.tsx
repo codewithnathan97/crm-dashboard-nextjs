@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Card from '@/app/components/Card';
 import { DollarSign } from 'lucide-react';
 import { Deal } from '@/types';
 
